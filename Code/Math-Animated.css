@@ -1,0 +1,641 @@
+/* Arthur: Maleick Williams
+Student ID: 2111578
+Date: April 29, 2026
+Title: Design a web base application that is guided by the projects constraints,
+*/
+@import url('https://fonts.cdnfonts.com/css/hate-agent');
+@import url('https://fonts.cdnfonts.com/css/Knife-Princess');
+
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    background: linear-gradient(135deg, rgb(22, 51, 92), rgb(195, 195, 222),  rgb(5, 5, 66));
+    overflow-x: hidden;
+}
+
+/*HEADER*/
+.header{
+    /* background: blue; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 100px;
+}
+
+.appName{
+    font-size: 2em;
+    color: darkorange;
+    text-shadow: 0 0 24px black;
+    user-select: none;
+}
+
+/* Navigation */
+.navigation a{
+    font-size: 1.1em;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: yellow;
+    text-decoration: none;
+    gap: 40px;
+}
+
+.navigation ul{
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+.navigation a::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background:whitesmoke;
+    transform: scaleX(0);
+    transition: transform .5s ;
+    transform-origin: right;
+}
+
+.navigation a:hover::after{
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.btnLogin-popup{
+    width: 130px;
+    height: 50px;
+    background:transparent;
+    border: 2px solid orange;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: whitesmoke;
+    font-weight: 40px;
+    margin-left: 40px;
+    transition: .5s;
+}
+
+.btnLogin-popup:hover{
+    background: whitesmoke;
+    color: orange;
+}
+
+/* Button*/
+.nav-button {
+    display: flex;
+    gap: 15px;
+}
+.nav-button button, .playButton{
+    width: 130px;
+    height: 50px;
+    background:transparent;
+    border: 2px solid orange;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: whitesmoke;
+    font-weight: 40px;
+    margin-left: 40px;
+    transition: .5s; 
+}
+
+.nav-button button:hover{
+    background: whitesmoke;
+    color: orange;
+}
+
+.player-app{
+    text-align: center;
+}
+
+.sign-wrapper{
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter:blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display:inline-block;
+    overflow: hidden;
+    transform: scale(0);
+    transition: transform .5s ease, height .2s ease;
+}
+
+.sign-wrapper.form-box{
+    width: 100%;
+}
+
+.sign-wrapper .form-box.login{
+    transition: transform .18s ease;
+}
+
+.sign-wrapper .form-box.register{
+    transition: transform .18s ease;
+}
+
+#wrapper2{
+    transform: scale(0);
+    display: none;
+}
+.form-box h2{
+    font-size: 2em;
+    color: blue;
+    text-align: center;
+
+}
+
+.input{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid grey;
+    margin: 30px 0;
+}
+
+.input label{
+    position: absolute;
+    top:50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: aliceblue ;
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s;
+}
+
+input:valid{
+    border: 2px solid green;
+}
+input:invalid {
+    border: 2px solid red;
+}
+.input input:focus~label, .input input:valid~label, .input input:not(:placeholder-shown)~label{
+    top: 5px;
+}
+
+#DOB{
+    opacity: 0%;
+}
+
+#DOB:focus, #DOB:valid, #Age:valid{
+    opacity: 100%;
+}
+
+.genderType{
+    display: block;
+    text-align:left ;
+}
+
+.genderType h3{
+    font-family:'Knife Princess', sans-serif;
+    font-weight: 200px;
+}
+
+.input input{
+    font-family: 'Neo sans',sans-serif;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: gold;
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+}
+/* .input .icon{
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: slategray;
+    line-height: 57px;
+} */
+
+fieldset .icon{
+    font-size: 4vh;
+}
+
+.remember-forget{
+    font-size: .9em;
+    font-weight: 500;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.remember-forget label input{
+    accent-color:blue;
+    margin-right: 3px;
+}
+.remember-forget a{
+    color:silver;
+    text-shadow: 2px 2px black;
+    text-decoration: none;
+}
+.remember-forget a:hover{
+    text-decoration: underline;
+}
+
+.btn:disabled   {
+    width: 100%;
+    height: 45px;
+    background: grey;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: not-allowed;
+    font-size: 1em;
+    font-weight: 500;
+}
+/* .login-register{
+    font-size: .9em;
+    color: aqua;
+    text-align: center;
+    font-weight: 500;
+    margin: 25PX 0 10px;
+
+} */
+.login-register p a {
+    font-family: 'NEO SANS',sans-serif;
+    color: yellowgreen;
+    text-decoration: none;
+    font-weight: 600;
+}
+.login-register p a:hover {
+    text-shadow: 0 0 12px orange;
+    text-decoration: underline;
+}
+
+.remember-forget label{
+    position: relative;
+    left: 3px;
+    top: 5px;
+    color: gold;
+    text-shadow: 0 0 10PX black;
+}
+.sign-wrapper .icon-close{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 45px;
+    height: 45px;
+    background: black;
+    font-size: 2em;
+    color: snow;
+    border-bottom-left-radius: 20px;
+    cursor:pointer;
+    z-index: 1;
+}
+
+.icon-close i{
+    position: relative;
+    top: 5px;
+}
+
+.icon-pass{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 45px;
+    height: 45px;
+    font-size: 2em;
+    color: black;
+    cursor:pointer;
+}
+footer{
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    position:sticky;
+    /* top: 100%; */
+}
+
+@media screen and (max-width:767px) {
+    .header{
+        padding: 20px 2%;
+    }
+}
+
+/* Animated Background - Container */
+.animatedBg{
+    background-color: rgba(143, 149, 228, 0.188); 
+    backdrop-filter: blur(20px); 
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+/*Icon Styling*/
+.bgIcon{
+    opacity:0.8;
+    position: absolute;
+    width: 50px;
+    pointer-events: none;
+}
+
+.nav-button #btnStartGame, #gameArea{
+    display: none;
+}
+input[type=submit]{
+    padding: 15px 32px;
+}
+input[type=submit], #btnStartGame, #checkAnswer{
+    background-color: #4CAF50;
+    border-radius: 25px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+  
+input[type=submit]:not(:disabled):hover, #btnStartGame:hover, #checkAnswer:hover, .playButton:hover{
+    background-color: #45a049; 
+    color: black;
+    cursor: pointer;
+}
+  
+input[type=submit]:not(:disabled):active {
+    background-color: #3e8e41;
+} 
+
+/* --------------------------------------Gameplay Area -------------------------------------- */
+#gameArea{
+    display: none;
+    justify-content: center;
+    padding: 20px;
+}
+#game-card {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    background: rgba(255,255,255,0.1);
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+.question-row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: nowrap;/*Keeps answer row directly after equal sign.*/
+}
+#answer-row{
+    display: none;
+    gap: 5px;
+    flex-shrink: 0;
+}
+  
+.numImg, .symbol, .input-row .answerBox {
+    width: 70px;
+    height: auto;
+}
+.input-row{
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+.input-row input{
+    background-color: transparent;
+    flex: 1;
+    padding: 10px;
+}
+.controls{
+    padding: 5%;
+    margin-top: 20px;
+    display: flex;
+    justify-content:baseline;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.controls{
+    flex: 1;
+    min-width: 100px;
+}
+.answerBox{
+    height: 20%;
+    margin: 50px;
+} 
+/*Area - Charts*/
+.chart{
+    background-color: aliceblue;
+}
+
+#dashboard {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.card {
+    width: 90%;
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(15px);
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+/*Area - Player  Statistics*/
+.showAllPlayer div {
+    display: inline-block;
+    width: 100%;
+    /* width: 200px; */
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    /* background: rgba(0,0,0,0.4); */
+}
+
+/* Charts layout */
+#charts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+.chart-card {
+    width: 300px;
+    /* max-width: 500px; */
+    height: auto;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 10px;
+}
+#showPercentageRow table{
+    width: 100%;
+    border:1px solid black;
+    /* display: flex; */
+}
+#progressWrapper{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 600px;
+    margin: 10px auto;
+}
+#userTag{
+    min-width: 100px;
+    font-weight: bold;
+    text-align: left;
+}
+#progress{
+    flex: 1;
+    height: 20px;
+    /* max-width: 600px; */
+    margin: 10px auto;
+    border-radius: 25px;
+    background-color:grey;
+    overflow: hidden;/* Allows the progress done to fill inside the progress bar. */
+}
+#progressDone{
+    height: 100%;/* Allows the the progress completed to fill the progress bar*/
+    width: 0%;
+    background-color: rgb(101, 101, 243); 
+    border-radius: 25px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: all 1s ease 0.3s;
+}
+#genderFrequency, #percentFrequency, #currentPercentFrequency{
+    width: 500px;
+    height: 500px;
+    /* height: auto; */
+}
+/* --------------------------------------About Page -------------------------------------- */
+.about-app, .service-app, .contact-app{
+    padding: 20px;
+    justify-content: center;
+    display: flex;
+}
+
+.about-wrapper, .service-wrapper, .contact-wrapper{
+    /* max-width: 1000px; */
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    backdrop-filter: blur(10px);
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 20px;
+    font-size: 18px;
+}
+
+.aboutArea, .serviceArea, .contactArea{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+.highlight{
+    color: aqua;
+    font-weight: bold;
+}
+
+/* .about-text{ //Note: Not enabled for preference.
+    backdrop-filter: blur(10px);
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 20px;
+    font-size: 18px;
+} */
+
+.about-text p, .info-card li{
+    margin-bottom: 5px;
+    line-height: 1.6;
+}
+
+.info-card{
+    flex: 1 1 250px;
+    max-width: 300px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, .5);
+    padding: 15px;
+}
+
+.info-card h3{
+    margin-bottom: 10px;
+}
+
+.info-card ul{
+    padding-left: 20px;
+}
+
+.info-card li{
+    list-style-type: square;
+    color: orange;
+    margin-left: 8px;
+}
+h1, p, .about-text, .service-text, .contact-text{
+    font-family: 'Yolk-Black',sans-serif;
+    color:mintcream;
+    text-shadow: 2px 2px black;
+}
+/* --------------------------------------Service Page -------------------------------------- */
+.serviceArea .info-card{
+    max-width: none;
+    padding: 20px;
+}
+#image_container{
+    text-align: center;
+}
+
+#image_container img{
+    border-radius: 20px; 
+    background-color: rgba(0, 0, 0, .5);
+    padding: 20px;
+}
+
+.fun_facts, footer{
+    font-family: 'DM Sans', sans-serif;
+    font-weight: bold;
+}
+
+.slides{
+    display: none;
+}
+/* --------------------------------------Contact Page -------------------------------------- */
+.contactArea table, tr, td, th{
+    border: 1px solid black;
+    text-align: center;    
+}
+.contactArea table, .contactArea table tr, .contactArea table td{
+    width: 100%;
+}
+.contactArea th, .contact-info{
+    color: black;
+    background-color: rgba(255, 255, 255, .5);
+}
+.contact-info a{
+    font-family: 'Dm Sans',sans-serif;
+    color:black;
+    font-weight: 300;
+    /* text-shadow: 1px 1px dimgray; */
+}
