@@ -1,0 +1,7 @@
+Welcome to our multiplication calculator 
+to play press start button
+once the game has started enter the answer you think is correct in the input box provided
+if your answer is correct the number will be green if not it will be red
+
+if button disables = true
+and clicked again then alert please press next to continue playing
