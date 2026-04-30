@@ -642,13 +642,8 @@ h1, p, .about-text, .service-text, .contact-text{
     display: none;
 }
 /* --------------------------------------Contact Page -------------------------------------- */
-.contactArea{
-    width: 100%;
-    padding: 20px;
-    overflow-x: auto;/*Allows content to scroll on smaller screens*/
-}
 .contactArea table{
-    table-layout: auto;
+    table-layout: fixed;
     word-wrap: break-word;
 }
 .contactArea table, tr, td, th{
