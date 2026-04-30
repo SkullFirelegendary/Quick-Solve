@@ -519,11 +519,6 @@ input[type=submit]:not(:disabled):active {
     border-radius: 15px;
     padding: 10px;
 }
-#showPercentageRow table{
-    width: 100%;
-    border:1px solid black;
-    /* display: flex; */
-}
 #progressWrapper{
     display: flex;
     align-items: center;
@@ -661,15 +656,15 @@ h1, p, .about-text, .service-text, .contact-text{
     display: none;
 }
 /* --------------------------------------Contact Page -------------------------------------- */
-.contactArea table{
+.contactArea table, #showPercentageRow table{
     table-layout: fixed;
     word-wrap: break-word;
 }
-.contactArea table, tr, td, th{
+.contactArea table, tr, td, th, #showPercentageRow table{
     border: 1px solid black;
     text-align: center;    
 }
-.contactArea table, .contactArea table tr, .contactArea table td{
+.contactArea table, .contactArea table tr, .contactArea table td, #showPercentageRow table{
     width: 100%;
 }
 .contactArea th, .contact-info{
