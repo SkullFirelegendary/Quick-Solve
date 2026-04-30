@@ -336,6 +336,10 @@ footer{
         gap: 15px;
         justify-content: flex-start;
     }
+    #image_container img{
+        width: 90%;
+        max-width: 100%;
+    }
 }
 
 /* Animated Background - Container */
