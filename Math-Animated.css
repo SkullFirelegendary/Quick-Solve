@@ -113,7 +113,22 @@ body{
     background: whitesmoke;
     color: orange;
 }
-
+.topBtn{
+    position:fixed; 
+    bottom: 30px;
+    right:20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+.topBtn span{
+    position: fixed;
+    bottom: 40px;
+    right:50px;
+}
+.topBtn img{
+    width: 30px;
+}
 .player-app{
     text-align: center;
 }
@@ -344,8 +359,7 @@ footer{
     #image_container img{
         width: 90%;
         max-width: 100%;
-    }
-    
+    }    
 }
 
 /* Animated Background - Container */
