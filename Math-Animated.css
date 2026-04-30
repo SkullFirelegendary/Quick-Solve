@@ -323,7 +323,18 @@ footer{
 
 @media screen and (max-width:767px) {
     .header{
+        /* flex-direction: column; */
         padding: 20px 2%;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .navigation{
+        width: 100%;
+    }
+    .navigation ul{/*Allows navigation content to be responsive*/
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: flex-start;
     }
 }
 
