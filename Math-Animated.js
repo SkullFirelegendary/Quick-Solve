@@ -283,8 +283,8 @@ function CheckAnswer(){
     picAnswerVal = correctAns.toString().padStart(2, "0");//Converts the answer into two place digits where if the answer is one digit, The tens place is default to 0.
 
     /*Feature to display the correct answer.*/
-        answer.src = "../Assets/Image/Numbers/Image"+ picAnswerVal[0]+".jpg";
-        answer2.src = "../Assets/Image/Numbers/Image"+ picAnswerVal[1]+".jpg";
+        answer.src = "Assets/Image/Numbers/Image"+ picAnswerVal[0]+".jpg";
+        answer2.src = "Assets/Image/Numbers/Image"+ picAnswerVal[1]+".jpg";
 
     if(userAns === correctAns){//Validates the answer to correct
         //window.alert("the user entered the correct answer");
@@ -330,8 +330,8 @@ function PlayGame(){
     tempDigitImg = digitImg[0][0];
     tempDigitImg2 = digitImg[1][0];        
 
-    tempDigitImg.src = "../Assets/Image/Numbers/Image" + int1 +".jpg";
-    tempDigitImg2.src = "../Assets/Image/Numbers/Image" + int2 + ".jpg";
+    tempDigitImg.src = "Assets/Image/Numbers/Image" + int1 +".jpg";
+    tempDigitImg2.src = "Assets/Image/Numbers/Image" + int2 + ".jpg";
 }
 
 function StorePercentage(score){//Determines where each data is populated.
