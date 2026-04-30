@@ -340,6 +340,7 @@ footer{
         width: 90%;
         max-width: 100%;
     }
+    
 }
 
 /* Animated Background - Container */
@@ -620,8 +621,12 @@ h1, p, .about-text, .service-text, .contact-text{
 }
 #image_container{
     text-align: center;
+    width: 100%;
 }
-
+.image-wrapper{
+    max-width: 100%;
+    overflow: hidden;
+}
 #image_container img{
     border-radius: 20px; 
     background-color: rgba(0, 0, 0, .5);
