@@ -338,7 +338,7 @@ footer{
     }
    .sign-wrapper{
         width: 90%;
-        /* min-width: 300px; */
+        min-width: 300px;
 
     }
     #image_container img{
