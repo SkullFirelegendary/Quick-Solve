@@ -339,7 +339,7 @@ footer{
 @media screen and (max-width:767px) {
     .header{
         flex-direction: column;
-        /* padding: 20px 2%; */
+        padding: 10px 2%;
         /* text-align: center; */
         align-items: flex-start;
         gap: 10px;
@@ -363,7 +363,7 @@ footer{
    .question-row img, 
     /* #answer-row img */
     {
-        width: 10px;
+        width: 5px;
     }
     
     #image_container img{
