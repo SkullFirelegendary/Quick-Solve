@@ -355,7 +355,7 @@ footer{
         width: 90%;
         min-width: 300px;
     }
-    .answerBox{
+    #answerBox{
         width:50%
         /* margin: 50px; */
     } 
