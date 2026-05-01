@@ -357,8 +357,12 @@ footer{
     }
     #answerBox{
         width: 50%;
-        /* margin: 50px; */
-    } 
+    }
+    
+    .question-row img{
+        width: 50%;
+    }
+    
     #image_container img{
         width: 90%;
         max-width: 100%;
