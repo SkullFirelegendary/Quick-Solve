@@ -340,6 +340,7 @@ footer{
     .header{
         flex-direction: column;
         padding: 20px 2%;
+        text-align: center;
         align-items: flex-start;
         gap: 10px;
     }
@@ -362,7 +363,7 @@ footer{
    .question-row img, 
     /* #answer-row img */
     {
-        width: 5%;
+        width: 2%;
     }
     
     #image_container img{
