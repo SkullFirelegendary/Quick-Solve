@@ -359,8 +359,8 @@ footer{
         width: 50%;
     }
     
-    .question-row img{
-        width: 20%;
+   .question-row img, #answer-row img{
+        width: 30%;
     }
     
     #image_container img{
