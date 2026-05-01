@@ -338,7 +338,7 @@ footer{
 
 @media screen and (max-width:767px) {
     .header{
-        /* flex-direction: column; */
+        flex-direction: column;
         padding: 20px 2%;
         align-items: flex-start;
         gap: 10px;
