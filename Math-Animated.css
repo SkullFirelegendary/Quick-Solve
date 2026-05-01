@@ -360,10 +360,10 @@ footer{
         width: 50%;
     }
     
-   .question-row img
-    /* #answer-row img */
+   .question-row img,
+    #answer-row img
     {
-        width: 10%;
+        width: 15%;
     }
     
     #image_container img{
