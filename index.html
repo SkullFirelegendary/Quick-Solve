@@ -207,22 +207,24 @@
 <script src="Math-Animated.js"></script>
 <script>
     window.addEventListener("load", () =>{
-        const params = new URLSearchParams(window.location.search), action = params.get("action");
+        const url = new URL(window.location.href), params = url.searchParams, action = params.get("action")//Clears hash from url. , 
+        sanitizedUrl = newPath +  (params.toString() ? "?" + params.toString(): "");
+        let newPath = url.pathname;
 
-        if (action === "login") {
-            SignIn();
-            action
+        if (action === "login") {SignIn();}//Redirects to 
+        if (action === "register"){RegisterPage();}
+        if (action === "play"){ StartGame();}
+
+        if (newPath.endsWith("index.html")) {
+            newPath = newPath.replace("index.html", "");//Clears index pathname from url.
         }
-        if (action === "register"){
-            RegisterPage();
-        }
-        if (action === "play"){
-            StartGame();
-        }
+
         if (action) {
-            window.history.replaceState({}, document.title, window.location.pathname);//Used to clear action after its operation.
+            params.delete("action");//Used to clear action after its operation.
         }
+        window.history.replaceState({}, document.title, sanitizedUrl + url.hash);//Used to replace url after its sanitation.
     });
+</script>
 </script>
 <footer>
     © <span id="currentYear"></span> Created and Owned by the Web Sparks.<!-- Created by Maleick Williams of Student Id: 2111578 -->
