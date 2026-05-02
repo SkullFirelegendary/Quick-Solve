@@ -357,7 +357,7 @@ footer{
         min-width: 300px;
     }
     #answerBox{
-        width: 50%;
+        width: 30%;
     }
 
     /* .question-row {
@@ -455,6 +455,7 @@ input[type=submit]:not(:disabled):active {
     gap: 5%;
     /* gap: 10px; */
     flex-wrap: nowrap;/*Keeps answer row directly after equal sign.*/
+    overflow-x: auto;
 }
 #answer-row{
     display: none;
