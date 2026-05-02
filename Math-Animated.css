@@ -360,16 +360,17 @@ footer{
         width: 50%;
     }
 
-    .question-row {
+    /* .question-row {
+        gap: 4px;
         flex-wrap: wrap;
         justify-content: center;
-    }
+    } */
 
-    #answer-row {
+    /* #answer-row {
         width: 100%;
         justify-content: center;
         margin-top: 5px;
-    }
+    } */
     
    /* .question-row img
     {
@@ -451,7 +452,8 @@ input[type=submit]:not(:disabled):active {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 5%;
+    /* gap: 10px; */
     flex-wrap: nowrap;/*Keeps answer row directly after equal sign.*/
 }
 #answer-row{
