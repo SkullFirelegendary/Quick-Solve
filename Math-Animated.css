@@ -360,7 +360,7 @@ footer{
         width: 50%;
     }
 
-    question-row {
+    .question-row {
         flex-wrap: wrap;
         justify-content: center;
     }
