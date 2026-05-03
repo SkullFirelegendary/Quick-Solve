@@ -206,9 +206,8 @@
 </body>
 <script src="Math-Animated.js"></script>
 <script>
-    window.addEventListener("load", () =>{
-        const url = new URL(window.location.href), params = url.searchParams, action = params.get("action")//Clears hash from url. , 
-        sanitizedUrl = newPath +  (params.toString() ? "?" + params.toString(): "");
+    function sanitizeUrl() {
+        const url = new URL(window.location.href), params = url.searchParams, action = params.get("action")//Clears hash from url. , ;
         let newPath = url.pathname;
 
         if (action === "login") {SignIn();}//Redirects to 
@@ -222,9 +221,18 @@
         if (action) {
             params.delete("action");//Used to clear action after its operation.
         }
-        window.history.replaceState({}, document.title, sanitizedUrl + url.hash);//Used to replace url after its sanitation.
-    });
-</script>
+
+        const cleanedUrl = newPath +  (params.toString() ? "?" + params.toString(): "");
+
+        if (window.location.href !== window.location.origin + cleanedUrl ) {
+            window.history.replaceState({}, document.title, cleanedUrl);//Used to replace url after its sanitation.
+        }
+    }
+
+    window.addEventListener("load", sanitizeUrl);//Fires on page load
+    window.addEventListener("hashchange", sanitizeUrl);//Fires on url hash change.
+    window.addEventListener("popstate", sanitizeUrl);//Fires on page  navigation interaction.
+
 </script>
 <footer>
     © <span id="currentYear"></span> Created and Owned by the Web Sparks.<!-- Created by Maleick Williams of Student Id: 2111578 -->
