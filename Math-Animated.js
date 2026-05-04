@@ -330,7 +330,7 @@ function PlayGame(){
     userAnswer.value = "";//Clears user input for new question.
 
     currentMathSymbol = GenerateMathOperator();
-    operation.src="../Assets/Image/Symbols/" + currentMathSymbol + "Symbol.png";//Applies current question operation symbol.
+    operation.src="Assets/Image/Symbols/" + currentMathSymbol + "Symbol.png";//Applies current question operation symbol.
 
     // Multiplication
     do {//Ensures no two digit are both zeros (0 x 0).
@@ -368,9 +368,9 @@ function ShowNum(container, number){//Fires to properly display number to user i
         const image = document.createElement("img");//Creates a new element of img for each digit place.
         
         if(digit === "-"){
-            image.src = "../Assets/Image/Symbols/subtractionSymbol.jpg";
+            image.src = "Assets/Image/Symbols/subtractionSymbol.jpg";
         }else{
-            image.src = "../Assets/Image/Numbers/Image" + digit + ".jpg";
+            image.src = "Assets/Image/Numbers/Image" + digit + ".jpg";
         }
         // image.style.display = "inline-block";
         container.appendChild(image);
