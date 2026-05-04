@@ -15,20 +15,18 @@ currentPercentChartElement = document.getElementById('mostRecentPercentChart'), 
 
 var amtOfUsers = [0, 0, 0, 0, 0, 0 ], numberOfUser = 1, loggedInUser = "", flag = false, percentArr = ["< 50", "50-59", "60-69", "70-79", "80-89", "90-100"],
 currentPercentArr = [0, 0, 0, 0, 0, 0], last_score = -1, lastLoggedInUser, chart1, chart2, chart3, checkAnswerState = 0,
-int1, int2;//Variables that stores the two random generate number
+int1, int2, int3;//Variables that stores the two random generate number
 
 /*Gameplay Variables */
-var multiplication = document.getElementById("multiSymb"), 
+var operation = document.getElementById("operationSymb"), 
 equalSymbol = document.getElementById("equSymb"),
-answer = document.getElementById("ansD1"), 
-answer2 = document.getElementById("ansD2"), 
+// answer = document.getElementById("ansD1"), 
+// answer2 = document.getElementById("ansD2"), 
+// answer3 = document.getElementById("ansD3"),
 userAnswer = document.getElementById("answerBox"),
 endGameButton = document.getElementById("endGameBtn"),
-findPercentButton = document.getElementById("findPercentBtn"),
-digit1 = [document.getElementById("img1"), 1], digit2 = [document.getElementById("img2"), 2]; //Digit Images
-
-/*Array for grouping game digits*/
-var digitImg = [digit1, digit2];
+findPercentButton = document.getElementById("findPercentBtn"), currentMathSymbol = "",
+digit1 = document.getElementById("numArea"), digit2 = document.getElementById("numArea2"); //Digit Images
 
 playerRegistrationData["Maleick"] = {
     firstName: "Maleick", 
@@ -53,7 +51,7 @@ function getLoginPassword(){
 //Register
 function getFirstName(){
     return document.getElementById("firstName");
-}
+}''
 function getLastName(){
     return document.getElementById("lastName");
 }
@@ -268,8 +266,9 @@ function CurrentPlayerProgressBar(){
 
 /*This function fires when the User clicks the submit button and validates the answer*/
 function CheckAnswer(){
-    var correctAns, userAns, picAnswerVal;
-    
+    let correctAns;
+    var userAns;
+
     if (userAnswer.value === "") {//Ensures user inputs is not empty.
         alert("Please enter an answer!");
         return;
@@ -277,27 +276,37 @@ function CheckAnswer(){
 
     submitAnswer.disabled = true;
 
-    correctAns = int1* int2; //Calculation
-    userAns = Number(userAnswer.value);//Ensures user input is a number
-    answerArea.style.display =  "flex";
-    picAnswerVal = correctAns.toString().padStart(2, "0");//Converts the answer into two place digits where if the answer is one digit, The tens place is default to 0.
+    switch (currentMathSymbol) {//Determines the question answer.
+        case "addition":
+            correctAns = int1 + int2; //Calculation
+            break;
+        case "subtraction":
+            correctAns = int1 - int2; //Calculation
+            break;
+        case "division":
+            correctAns = int1 / int2; //Calculation
+            break;
+        default:
+                correctAns = int1* int2; //Calculation
+            break;
+    }
 
-    /*Feature to display the correct answer.*/
-        answer.src = "Assets/Image/Numbers/Image"+ picAnswerVal[0]+".jpg";
-        answer2.src = "Assets/Image/Numbers/Image"+ picAnswerVal[1]+".jpg";
+    userAns = Number(userAnswer.value);//Ensures user input is a number
+    
+    answerArea.style.display =  "flex";//Display Answer
+    ShowNum(answerArea, correctAns);/*Feature to display the correct answer.*/    
 
     if(userAns === correctAns){//Validates the answer to correct
         //window.alert("the user entered the correct answer");
         playerRegistrationData[loggedInUser].correctAns += 1;
-        answer.style.backgroundColor = "rgb(124, 203, 110)";
-        answer2.style.backgroundColor = "rgb(124, 203, 110)";
+        answerArea.style.backgroundColor = "rgb(124, 203, 110)";
     }
     else{//Validates the answer to incorrect
         //window.alert("That was the wrong number"+"\n"+"the correct answer is "+ correctAns +"\n"+"the user answer is " + userAns);
         playerRegistrationData[loggedInUser].incorrectAns += 1;
-        answer.style.backgroundColor = "rgb(203, 110, 126)";
-        answer2.style.backgroundColor = "rgb(203, 110, 126)";
+        answerArea.style.backgroundColor = "rgb(203, 110, 126)";
     }
+
     ShowAllStats();
     CurrentPlayerProgressBar();
     UpdateAllCharts();//Live update the charts
@@ -308,30 +317,64 @@ function GetRandomInt(max) {//Fires to generate new digit.
     return Math.floor(Math.random() * max);
 }
 
-
 /*The play game function fire the Generates number function and displays them on the field*/
 function PlayGame(){
     let tempDigitImg, tempDigitImg2;
 
-    answerArea.style.display =  "none";
+    //Disables and reset answer display
+    answerArea.style.display = "none";
+    answerArea.innerHTML =  "";
+    answerArea.style.backgroundColor = "transparent";
+
     submitAnswer.disabled = false;
     userAnswer.value = "";//Clears user input for new question.
-    answer.style.backgroundColor = "transparent";
-    answer2.style.backgroundColor = "transparent";
+
+    currentMathSymbol = GenerateMathOperator();
+    operation.src="../Assets/Image/Symbols/" + currentMathSymbol + "Symbol.png";//Applies current question operation symbol.
+
+    // Multiplication
     do {//Ensures no two digit are both zeros (0 x 0).
-        int1 = GetRandomInt(10);
-        int2 = GetRandomInt(10);
-    } while (int1 === 0 && int2 === 0);
+        tempDigitImg = GetRandomInt(10);
+        tempDigitImg2 = GetRandomInt(10);
+    } while (tempDigitImg === 0 && tempDigitImg2 === 0);
     
+    if (currentMathSymbol === 'division') {
+        tempDigitImg2 = GetRandomInt(9) + 1;//Ensures the dividend is not 0;
+        tempDigitImg = tempDigitImg * tempDigitImg2;
+    } 
+    else if (currentMathSymbol === 'subtraction') {
+        if (tempDigitImg < tempDigitImg2) {
+            [tempDigitImg, tempDigitImg2] = [tempDigitImg2, tempDigitImg];//Swap integer places.
+        }
+    }
 
-    console.log("int 1 is: ", int1);
-    console.log("int 2 is: ", int2);
+    int1 = tempDigitImg;
+    int2 = tempDigitImg2;
+
+    ShowNum(digit1, int1);
+    ShowNum(digit2, int2);
+}
+
+function GenerateMathOperator(){//Fires to generate and return operator.
+    const operator = ["multiplication","addition", "subtraction", "division"];
+    return operator[Math.floor(Math.random() * operator.length)];//Dynamically generates the operator from the array.
+}
+
+function ShowNum(container, number){//Fires to properly display number to user interface.
+    const digits = number.toString().split("");//Converts the answer into individual numeral place digits.
+    container.innerHTML = "";//Clears area for new content.
+    
+    digits.forEach(digit => {//Fires to dynamically assign image and display it.
+        const image = document.createElement("img");//Creates a new element of img for each digit place.
         
-    tempDigitImg = digitImg[0][0];
-    tempDigitImg2 = digitImg[1][0];        
-
-    tempDigitImg.src = "Assets/Image/Numbers/Image" + int1 +".jpg";
-    tempDigitImg2.src = "Assets/Image/Numbers/Image" + int2 + ".jpg";
+        if(digit === "-"){
+            image.src = "../Assets/Image/Symbols/subtractionSymbol.jpg";
+        }else{
+            image.src = "../Assets/Image/Numbers/Image" + digit + ".jpg";
+        }
+        // image.style.display = "inline-block";
+        container.appendChild(image);
+    });
 }
 
 function StorePercentage(score){//Determines where each data is populated.
@@ -372,8 +415,8 @@ function FindPercentageScore(){
     progress.innerHTML = "";
     progress.appendChild(progressDone);
 
-    progressDone.style.width = `${percentageScore}% `;
-    percentAmt.innerHTML = `${percentageScore}% `;
+    progressDone.style.width = `${percentageScore}%`;
+    percentAmt.innerHTML = `${percentageScore}%`;
     progressDone.appendChild(percentAmt);    
 }
 
@@ -431,27 +474,6 @@ function StoreCurrentPercent(score){
     else if(score >= 90 && score <= 100){
         currentPercentArr[5]++;
     }
-
-    // if(loggedInUser === lastLoggedInUser && last_score !== 1){
-    //     if(last_score >= 0 && last_score < 50){
-    //         currentPercentArr[0]--;
-    //     }
-    //     else if(last_score >= 50 && last_score <= 59){
-    //         currentPercentArr[1]--;
-    //     }
-    //     else if(last_score >= 60 && last_score <= 69){
-    //         currentPercentArr[2]--;
-    //     }
-    //     else if(last_score >= 70 && last_score <= 79){
-    //         currentPercentArr[3]--;
-    //     }
-    //     else if(last_score >= 80 && last_score <= 89){
-    //         currentPercentArr[4]--;
-    //     }
-    //     else if(last_score >= 90 && last_score <= 100){
-    //         currentPercentArr[5]--;
-    //     }
-    // }
 
     lastLoggedInUser = loggedInUser
     last_score = score
@@ -691,15 +713,6 @@ function CountGender(){
     }
     GenderFrequency(male, female);    
 }
-
-// function CallGenderChart(){
-//     var recallChart = setInterval(function(){
-//         CountGender()
-//         console.log("this call is for the charts")
-//     },5000)
-// }
-
-// CallGenderChart()
 
 /* Animate icons- rotate as they move from top to bottom  */
 icons.forEach(icon =>{
