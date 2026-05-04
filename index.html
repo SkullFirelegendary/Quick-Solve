@@ -1,10 +1,16 @@
+<!-- 
+Arthur: Maleick Williams
+Student ID: 2111578
+Date: April 29, 2026
+Title: Design a web base application that is guided by the projects constraints,
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="Assets/Image/Math-logo.png" type="image/x-icon">
+    <link rel="icon" href="../Assets/Image/Math-logo.png" type="image/x-icon">
     <link rel="stylesheet" href="boxicons-2.1.4/css/boxicons.css">
     <link rel="stylesheet" href="Math-Animated.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.js" integrity="sha512-CWVDkca3f3uAWgDNVzW+W4XJbiC3CH84P2aWZXj+DqI6PNbTzXbl1dIzEHeNJpYSn4B6U8miSZb/hCws7FnUZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -14,19 +20,19 @@
     <!-- Background Animation -->
     <div class="animatedBg">
         <!-- <div class="multiplication"> -->
-            <img class="bgIcon" src="Assets/Image/Symbols/multiplication.png" alt="">
-            <img class="bgIcon" src="Assets/Image/Symbols/multiplication_2.png" alt="">
-            <img class="bgIcon" src="Assets/Image/Symbols/multiplication_3.png" alt="">
+            <img class="bgIcon" src="../Assets/Image/Symbols/multiplication.png" alt="">
+            <img class="bgIcon" src="../Assets/Image/Symbols/multiplication_2.png" alt="">
+            <img class="bgIcon" src="../Assets/Image/Symbols/multiplication_3.png" alt="">
         <!-- </div> -->
         <!-- <div class="addition"> -->
-            <img class="bgIcon" src="Assets/Image/Symbols/addition_1.png" alt="">
-            <img class="bgIcon" src="Assets/Image/Symbols/addition_2.png" alt="">
-            <img class="bgIcon" src="Assets/Image/Symbols/addition_3.png" alt="">
+            <img class="bgIcon" src="../Assets/Image/Symbols/addition_1.png" alt="">
+            <img class="bgIcon" src="../Assets/Image/Symbols/addition_2.png" alt="">
+            <img class="bgIcon" src="../Assets/Image/Symbols/addition_3.png" alt="">
         <!-- </div> -->
         <!-- <div class="division"> -->
-            <img class="bgIcon" src="Assets/Image/Symbols/division1.png" alt="">
-            <img class="bgIcon" src="Assets/Image/Symbols/division2.png" alt="">
-            <img class="bgIcon" src="Assets/Image/Symbols/division3.png" alt="">
+            <img class="bgIcon" src="../Assets/Image/Symbols/division1.png" alt="">
+            <img class="bgIcon" src="../Assets/Image/Symbols/division2.png" alt="">
+            <img class="bgIcon" src="../Assets/Image/Symbols/division3.png" alt="">
         <!-- </div> -->
     </div>
     <!-- Navigation -->
@@ -165,18 +171,21 @@
     <section id = "gameArea" >
         <div id="game-card">
             <div class="question-row">
-                <img id="img1" class="numImg" src="Assets/Image/Numbers/Image1.jpg"alt="Digit1"> <!--First digit-->
-                <img id="multiSymb" class="symbol" src="Assets/Image/Symbols/multiplicationSymbol.jpg" alt="Mathematical Sign"> <!--Mathematical Sign-->
-                <img id="img2" class="numImg" src="Assets/Image/Numbers/Image1.jpg" alt="Digit2"> <!--Second digit-->
-                <img id="equSymb" class="symbol" src="Assets/Image/Symbols/equalSymbol.jpg" alt="Mathematical Sign">
+                <div id="numArea">
+                    <!--First digits -->
+                </div>
+                <img id="operationSymb" class="symbol" src="../Assets/Image/Symbols/multiplicationSymbol.jpg" alt="Mathematical Sign"> <!--Mathematical Sign-->
+                <div id="numArea2">
+                    <!-- Second digits -->
+                </div>
+                <img id="equSymb" class="symbol" src="../Assets/Image/Symbols/equalSymbol.jpg" alt="Mathematical Sign">
                 <div id="answer-row">
-                    <img id="ansD1" class="numImg" src="Assets/Image/Numbers/Image0.jpg" alt="AnswerDigit1">
-                    <img id="ansD2" class="numImg" src="Assets/Image/Numbers/Image2.jpg"alt="AnswerDigit2">
+                    <!-- AnswerDigits-->
                 </div>
             </div>
             <div class="input-row">
                 <input id="answerBox" type="number" placeholder = "Enter your answer">
-                <button id="checkAnswer" onclick="CheckAnswer()">CheckAnswer</button>
+                <button type= "submit" id="checkAnswer" onclick="CheckAnswer()">CheckAnswer</button>
             </div>
             <!-- Gameplay Controls -->
             <div class="controls">
@@ -199,7 +208,7 @@
     <a href="#header">
         <button type="button" class="topBtn">
             <span>Top</span>
-            <img src="Assets/Image/Top.png" alt="topBtn">
+            <img src="../Assets/Image/Top.png" alt="topBtn">
         </button>
     </a>
 </body>
@@ -234,6 +243,6 @@
 
 </script>
 <footer>
-    © <span id="currentYear"></span> Created and Owned by the Web Sparks.<!-- Created by Maleick Williams of Student Id: 2111578 -->
+    © <span id="currentYear"></span> Created and Owned by the Web Sparks.<!--Created by Maleick Williams, of student Id: 2111578 -->
 </footer>
 </html>
